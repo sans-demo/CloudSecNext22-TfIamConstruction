@@ -1,0 +1,285 @@
+# 284 lines of lifecycle configuration
+resource "aws_s3_bucket_lifecycle_configuration" "s3_by_hand_lifecycle_rules" {
+  bucket = "kyler-iterated-testing-bucket"
+  #id     = (known after apply)
+
+  rule {
+    id     = "Move Everything to Standard-IA after 30 Days"
+    status = "Enabled"
+
+    noncurrent_version_transition {
+      noncurrent_days = 30
+      storage_class   = "STANDARD_IA"
+    }
+
+    transition {
+      days          = 30
+      storage_class = "STANDARD_IA"
+    }
+  }
+  rule {
+    id     = "Expire all noncurrent versions after 30 Days"
+    status = "Enabled"
+
+    expiration {
+      days                         = 0
+      expired_object_delete_marker = true
+    }
+
+    noncurrent_version_expiration {
+      noncurrent_days = 30
+    }
+  }
+  rule {
+    id     = "Partner1"
+    status = "Enabled"
+
+    abort_incomplete_multipart_upload {
+      days_after_initiation = 7
+    }
+
+    expiration {
+      days                         = 100
+      expired_object_delete_marker = false
+    }
+
+    filter {
+      prefix = "Partner1/"
+    }
+
+    noncurrent_version_expiration {
+      noncurrent_days = 120
+    }
+  }
+  rule {
+    id     = "Partner10"
+    status = "Enabled"
+
+    abort_incomplete_multipart_upload {
+      days_after_initiation = 7
+    }
+
+    expiration {
+      days                         = 100
+      expired_object_delete_marker = false
+    }
+
+    filter {
+      prefix = "Partner10/"
+    }
+
+    noncurrent_version_expiration {
+      noncurrent_days = 120
+    }
+  }
+  rule {
+    id     = "Partner11"
+    status = "Enabled"
+
+    abort_incomplete_multipart_upload {
+      days_after_initiation = 7
+    }
+
+    expiration {
+      days                         = 75
+      expired_object_delete_marker = false
+    }
+
+    filter {
+      prefix = "Partner11/"
+    }
+
+    noncurrent_version_expiration {
+      noncurrent_days = 120
+    }
+  }
+  rule {
+    id     = "Partner12"
+    status = "Enabled"
+
+    abort_incomplete_multipart_upload {
+      days_after_initiation = 7
+    }
+
+    expiration {
+      days                         = 100
+      expired_object_delete_marker = false
+    }
+
+    filter {
+      prefix = "Partner12/"
+    }
+
+    noncurrent_version_expiration {
+      noncurrent_days = 120
+    }
+  }
+  rule {
+    id     = "Partner2"
+    status = "Enabled"
+
+    abort_incomplete_multipart_upload {
+      days_after_initiation = 7
+    }
+
+    expiration {
+      days                         = 100
+      expired_object_delete_marker = false
+    }
+
+    filter {
+      prefix = "Partner2/"
+    }
+
+    noncurrent_version_expiration {
+      noncurrent_days = 120
+    }
+  }
+  rule {
+    id     = "Partner3"
+    status = "Enabled"
+
+    abort_incomplete_multipart_upload {
+      days_after_initiation = 7
+    }
+
+    expiration {
+      days                         = 30
+      expired_object_delete_marker = false
+    }
+
+    filter {
+      prefix = "Partner3/"
+    }
+
+    noncurrent_version_expiration {
+      noncurrent_days = 120
+    }
+  }
+  rule {
+    id     = "Partner4"
+    status = "Enabled"
+
+    abort_incomplete_multipart_upload {
+      days_after_initiation = 7
+    }
+
+    expiration {
+      days                         = 100
+      expired_object_delete_marker = false
+    }
+
+    filter {
+      prefix = "Partner4/"
+    }
+
+    noncurrent_version_expiration {
+      noncurrent_days = 120
+    }
+  }
+  rule {
+    id     = "Partner5"
+    status = "Enabled"
+
+    abort_incomplete_multipart_upload {
+      days_after_initiation = 7
+    }
+
+    expiration {
+      days                         = 100
+      expired_object_delete_marker = false
+    }
+
+    filter {
+      prefix = "Partner5/"
+    }
+
+    noncurrent_version_expiration {
+      noncurrent_days = 120
+    }
+  }
+  rule {
+    id     = "Partner6"
+    status = "Enabled"
+
+    abort_incomplete_multipart_upload {
+      days_after_initiation = 7
+    }
+
+    expiration {
+      days                         = 60
+      expired_object_delete_marker = false
+    }
+
+    filter {
+      prefix = "Partner6/"
+    }
+
+    noncurrent_version_expiration {
+      noncurrent_days = 120
+    }
+  }
+  rule {
+    id     = "Partner7"
+    status = "Enabled"
+
+    abort_incomplete_multipart_upload {
+      days_after_initiation = 7
+    }
+
+    expiration {
+      days                         = 100
+      expired_object_delete_marker = false
+    }
+
+    filter {
+      prefix = "Partner7/"
+    }
+
+    noncurrent_version_expiration {
+      noncurrent_days = 120
+    }
+  }
+  rule {
+    id     = "Partner8"
+    status = "Enabled"
+
+    abort_incomplete_multipart_upload {
+      days_after_initiation = 7
+    }
+
+    expiration {
+      days                         = 100
+      expired_object_delete_marker = false
+    }
+
+    filter {
+      prefix = "Partner8/"
+    }
+
+    noncurrent_version_expiration {
+      noncurrent_days = 120
+    }
+  }
+  rule {
+    id     = "Partner9"
+    status = "Enabled"
+
+    abort_incomplete_multipart_upload {
+      days_after_initiation = 7
+    }
+
+    expiration {
+      days                         = 100
+      expired_object_delete_marker = false
+    }
+
+    filter {
+      prefix = "Partner9/"
+    }
+
+    noncurrent_version_expiration {
+      noncurrent_days = 120
+    }
+  }
+}

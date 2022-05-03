@@ -1,0 +1,858 @@
+# 857 lines of S3 bucket policy
+  resource "aws_s3_bucket_policy" "iterated_s3_policy" {
+      bucket = "kyler-iterated-testing-bucket"
+      id     = (known after apply)
+      policy = jsonencode(
+            {
+              Statement = [
+                  {
+                      Action    = "*"
+                      Condition = {
+                          Bool = {
+                              aws:SecureTransport = [
+                                  "false",
+                                ]
+                            }
+                        }
+                      Effect    = "Deny"
+                      Principal = "*"
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/*"
+                      Sid       = "DenyNonSecureTransport"
+                    },
+                  {
+                      Action    = "s3:ListBucket"
+                      Condition = {
+                          StringLike = {
+                              s3:prefix = [
+                                  "Partner1/*",
+                                ]
+                            }
+                        }
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner1"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket"
+                      Sid       = "AllowListOfPartner1Folder"
+                    },
+                  {
+                      Action    = "s3:ListBucket"
+                      Condition = {
+                          StringLike = {
+                              s3:prefix = [
+                                  "Partner10/*",
+                                ]
+                            }
+                        }
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner10"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket"
+                      Sid       = "AllowListOfPartner10Folder"
+                    },
+                  {
+                      Action    = "s3:ListBucket"
+                      Condition = {
+                          StringLike = {
+                              s3:prefix = [
+                                  "put_files_here_partner11/",
+                                ]
+                            }
+                        }
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner11"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket"
+                      Sid       = "AllowListOfPartner11Folder"
+                    },
+                  {
+                      Action    = "s3:ListBucket"
+                      Condition = {
+                          StringLike = {
+                              s3:prefix = [
+                                  "dropbox/",
+                                ]
+                            }
+                        }
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner12"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket"
+                      Sid       = "AllowListOfPartner12Folder"
+                    },
+                  {
+                      Action    = "s3:ListBucket"
+                      Condition = {
+                          StringLike = {
+                              s3:prefix = [
+                                  "client2/",
+                                ]
+                            }
+                        }
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner2"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket"
+                      Sid       = "AllowListOfPartner2Folder"
+                    },
+                  {
+                      Action    = "s3:ListBucket"
+                      Condition = {
+                          StringLike = {
+                              s3:prefix = [
+                                  "Partner3/*",
+                                ]
+                            }
+                        }
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner3"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket"
+                      Sid       = "AllowListOfPartner3Folder"
+                    },
+                  {
+                      Action    = "s3:ListBucket"
+                      Condition = {
+                          StringLike = {
+                              s3:prefix = [
+                                  "Partner4/*",
+                                ]
+                            }
+                        }
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner4"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket"
+                      Sid       = "AllowListOfPartner4Folder"
+                    },
+                  {
+                      Action    = "s3:ListBucket"
+                      Condition = {
+                          StringLike = {
+                              s3:prefix = [
+                                  "partner5/",
+                                ]
+                            }
+                        }
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner5"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket"
+                      Sid       = "AllowListOfPartner5Folder"
+                    },
+                  {
+                      Action    = "s3:ListBucket"
+                      Condition = {
+                          StringLike = {
+                              s3:prefix = [
+                                  "Partner6/*",
+                                ]
+                            }
+                        }
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner6"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket"
+                      Sid       = "AllowListOfPartner6Folder"
+                    },
+                  {
+                      Action    = "s3:ListBucket"
+                      Condition = {
+                          StringLike = {
+                              s3:prefix = [
+                                  "Partner7/*",
+                                ]
+                            }
+                        }
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = [
+                              "arn:aws:iam::947197796922:user/Partner7c",
+                              "arn:aws:iam::947197796922:user/Partner7b",
+                              "arn:aws:iam::947197796922:user/Partner7a",
+                            ]
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket"
+                      Sid       = "AllowListOfPartner7Folder"
+                    },
+                  {
+                      Action    = "s3:ListBucket"
+                      Condition = {
+                          StringLike = {
+                              s3:prefix = [
+                                  "Partner8/*",
+                                ]
+                            }
+                        }
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner8"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket"
+                      Sid       = "AllowListOfPartner8Folder"
+                    },
+                  {
+                      Action    = "s3:ListBucket"
+                      Condition = {
+                          StringLike = {
+                              s3:prefix = [
+                                  "Partner9/*",
+                                ]
+                            }
+                        }
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner9"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket"
+                      Sid       = "AllowListOfPartner9Folder"
+                    },
+                  {
+                      Action    = [
+                          "s3:GetObjectVersion",
+                          "s3:GetObjectTagging",
+                          "s3:GetObject",
+                          "s3:DeleteObject",
+                        ]
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner1"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/Partner1/*"
+                      Sid       = "AllowReadDeleteToPartner1Folder"
+                    },
+                  {
+                      Action    = [
+                          "s3:GetObjectVersion",
+                          "s3:GetObjectTagging",
+                          "s3:GetObject",
+                          "s3:DeleteObject",
+                        ]
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner10"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/Partner10/*"
+                      Sid       = "AllowReadDeleteToPartner10Folder"
+                    },
+                  {
+                      Action    = [
+                          "s3:GetObjectVersion",
+                          "s3:GetObjectTagging",
+                          "s3:GetObject",
+                          "s3:DeleteObject",
+                        ]
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner11"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/put_files_here_partner11/*"
+                      Sid       = "AllowReadDeleteToPartner11Folder"
+                    },
+                  {
+                      Action    = [
+                          "s3:GetObjectVersion",
+                          "s3:GetObjectTagging",
+                          "s3:GetObject",
+                          "s3:DeleteObject",
+                        ]
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner12"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/dropbox/*"
+                      Sid       = "AllowReadDeleteToPartner12Folder"
+                    },
+                  {
+                      Action    = [
+                          "s3:GetObjectVersion",
+                          "s3:GetObjectTagging",
+                          "s3:GetObject",
+                          "s3:DeleteObject",
+                        ]
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner2"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/client2/*"
+                      Sid       = "AllowReadDeleteToPartner2Folder"
+                    },
+                  {
+                      Action    = [
+                          "s3:GetObjectVersion",
+                          "s3:GetObjectTagging",
+                          "s3:GetObject",
+                          "s3:DeleteObject",
+                        ]
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner3"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/Partner3/*"
+                      Sid       = "AllowReadDeleteToPartner3Folder"
+                    },
+                  {
+                      Action    = [
+                          "s3:GetObjectVersion",
+                          "s3:GetObjectTagging",
+                          "s3:GetObject",
+                          "s3:DeleteObject",
+                        ]
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner4"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/Partner4/*"
+                      Sid       = "AllowReadDeleteToPartner4Folder"
+                    },
+                  {
+                      Action    = [
+                          "s3:GetObjectVersion",
+                          "s3:GetObjectTagging",
+                          "s3:GetObject",
+                          "s3:DeleteObject",
+                        ]
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner5"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/partner5/*"
+                      Sid       = "AllowReadDeleteToPartner5Folder"
+                    },
+                  {
+                      Action    = [
+                          "s3:GetObjectVersion",
+                          "s3:GetObjectTagging",
+                          "s3:GetObject",
+                          "s3:DeleteObject",
+                        ]
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner6"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/Partner6/*"
+                      Sid       = "AllowReadDeleteToPartner6Folder"
+                    },
+                  {
+                      Action    = [
+                          "s3:GetObjectVersion",
+                          "s3:GetObjectTagging",
+                          "s3:GetObject",
+                          "s3:DeleteObject",
+                        ]
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = [
+                              "arn:aws:iam::947197796922:user/Partner7c",
+                              "arn:aws:iam::947197796922:user/Partner7b",
+                              "arn:aws:iam::947197796922:user/Partner7a",
+                            ]
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/Partner7/*"
+                      Sid       = "AllowReadDeleteToPartner7Folder"
+                    },
+                  {
+                      Action    = [
+                          "s3:GetObjectVersion",
+                          "s3:GetObjectTagging",
+                          "s3:GetObject",
+                          "s3:DeleteObject",
+                        ]
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner8"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/Partner8/*"
+                      Sid       = "AllowReadDeleteToPartner8Folder"
+                    },
+                  {
+                      Action    = [
+                          "s3:GetObjectVersion",
+                          "s3:GetObjectTagging",
+                          "s3:GetObject",
+                          "s3:DeleteObject",
+                        ]
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner9"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/Partner9/*"
+                      Sid       = "AllowReadDeleteToPartner9Folder"
+                    },
+                  {
+                      Action    = "s3:PutObject"
+                      Condition = {
+                          StringEquals = {
+                              s3:x-amz-acl = [
+                                  "bucket-owner-full-control",
+                                ]
+                            }
+                        }
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner1"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/Partner1/*"
+                      Sid       = "AllowWriteToPartner1Folder"
+                    },
+                  {
+                      Action    = "s3:PutObject"
+                      Condition = {
+                          StringEquals = {
+                              s3:x-amz-acl = [
+                                  "bucket-owner-full-control",
+                                ]
+                            }
+                        }
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner10"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/Partner10/*"
+                      Sid       = "AllowWriteToPartner10Folder"
+                    },
+                  {
+                      Action    = "s3:PutObject"
+                      Condition = {
+                          StringEquals = {
+                              s3:x-amz-acl = [
+                                  "bucket-owner-full-control",
+                                ]
+                            }
+                        }
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner11"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/put_files_here_partner11/*"
+                      Sid       = "AllowWriteToPartner11Folder"
+                    },
+                  {
+                      Action    = "s3:PutObject"
+                      Condition = {
+                          StringEquals = {
+                              s3:x-amz-acl = [
+                                  "bucket-owner-full-control",
+                                ]
+                            }
+                        }
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner12"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/dropbox/*"
+                      Sid       = "AllowWriteToPartner12Folder"
+                    },
+                  {
+                      Action    = "s3:PutObject"
+                      Condition = {
+                          StringEquals = {
+                              s3:x-amz-acl = [
+                                  "bucket-owner-full-control",
+                                ]
+                            }
+                        }
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner2"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/client2/*"
+                      Sid       = "AllowWriteToPartner2Folder"
+                    },
+                  {
+                      Action    = "s3:PutObject"
+                      Condition = {
+                          StringEquals = {
+                              s3:x-amz-acl = [
+                                  "bucket-owner-full-control",
+                                ]
+                            }
+                        }
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner3"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/Partner3/*"
+                      Sid       = "AllowWriteToPartner3Folder"
+                    },
+                  {
+                      Action    = "s3:PutObject"
+                      Condition = {
+                          StringEquals = {
+                              s3:x-amz-acl = [
+                                  "bucket-owner-full-control",
+                                ]
+                            }
+                        }
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner4"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/Partner4/*"
+                      Sid       = "AllowWriteToPartner4Folder"
+                    },
+                  {
+                      Action    = "s3:PutObject"
+                      Condition = {
+                          StringEquals = {
+                              s3:x-amz-acl = [
+                                  "bucket-owner-full-control",
+                                ]
+                            }
+                        }
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner5"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/partner5/*"
+                      Sid       = "AllowWriteToPartner5Folder"
+                    },
+                  {
+                      Action    = "s3:PutObject"
+                      Condition = {
+                          StringEquals = {
+                              s3:x-amz-acl = [
+                                  "bucket-owner-full-control",
+                                ]
+                            }
+                        }
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner6"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/Partner6/*"
+                      Sid       = "AllowWriteToPartner6Folder"
+                    },
+                  {
+                      Action    = "s3:PutObject"
+                      Condition = {
+                          StringEquals = {
+                              s3:x-amz-acl = [
+                                  "bucket-owner-full-control",
+                                ]
+                            }
+                        }
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = [
+                              "arn:aws:iam::947197796922:user/Partner7c",
+                              "arn:aws:iam::947197796922:user/Partner7b",
+                              "arn:aws:iam::947197796922:user/Partner7a",
+                            ]
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/Partner7/*"
+                      Sid       = "AllowWriteToPartner7Folder"
+                    },
+                  {
+                      Action    = "s3:PutObject"
+                      Condition = {
+                          StringEquals = {
+                              s3:x-amz-acl = [
+                                  "bucket-owner-full-control",
+                                ]
+                            }
+                        }
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner8"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/Partner8/*"
+                      Sid       = "AllowWriteToPartner8Folder"
+                    },
+                  {
+                      Action    = "s3:PutObject"
+                      Condition = {
+                          StringEquals = {
+                              s3:x-amz-acl = [
+                                  "bucket-owner-full-control",
+                                ]
+                            }
+                        }
+                      Effect    = "Allow"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner9"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket/Partner9/*"
+                      Sid       = "AllowWriteToPartner9Folder"
+                    },
+                  {
+                      Action    = "s3:ListBucket"
+                      Condition = {
+                          Null          = {
+                              s3:prefix = [
+                                  "false",
+                                ]
+                            }
+                          StringNotLike = {
+                              s3:prefix = [
+                                  "Partner1/*",
+                                  "",
+                                ]
+                            }
+                        }
+                      Effect    = "Deny"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner1"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket"
+                      Sid       = "DenyNonPartner1Requests"
+                    },
+                  {
+                      Action    = "s3:ListBucket"
+                      Condition = {
+                          Null          = {
+                              s3:prefix = [
+                                  "false",
+                                ]
+                            }
+                          StringNotLike = {
+                              s3:prefix = [
+                                  "Partner10/*",
+                                  "",
+                                ]
+                            }
+                        }
+                      Effect    = "Deny"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner10"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket"
+                      Sid       = "DenyNonPartner10Requests"
+                    },
+                  {
+                      Action    = "s3:ListBucket"
+                      Condition = {
+                          Null          = {
+                              s3:prefix = [
+                                  "false",
+                                ]
+                            }
+                          StringNotLike = {
+                              s3:prefix = [
+                                  "put_files_here_partner11/*",
+                                  "",
+                                ]
+                            }
+                        }
+                      Effect    = "Deny"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner11"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket"
+                      Sid       = "DenyNonPartner11Requests"
+                    },
+                  {
+                      Action    = "s3:ListBucket"
+                      Condition = {
+                          Null          = {
+                              s3:prefix = [
+                                  "false",
+                                ]
+                            }
+                          StringNotLike = {
+                              s3:prefix = [
+                                  "dropbox/*",
+                                  "",
+                                ]
+                            }
+                        }
+                      Effect    = "Deny"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner12"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket"
+                      Sid       = "DenyNonPartner12Requests"
+                    },
+                  {
+                      Action    = "s3:ListBucket"
+                      Condition = {
+                          Null          = {
+                              s3:prefix = [
+                                  "false",
+                                ]
+                            }
+                          StringNotLike = {
+                              s3:prefix = [
+                                  "client2/*",
+                                  "",
+                                ]
+                            }
+                        }
+                      Effect    = "Deny"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner2"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket"
+                      Sid       = "DenyNonPartner2Requests"
+                    },
+                  {
+                      Action    = "s3:ListBucket"
+                      Condition = {
+                          Null          = {
+                              s3:prefix = [
+                                  "false",
+                                ]
+                            }
+                          StringNotLike = {
+                              s3:prefix = [
+                                  "Partner3/*",
+                                  "",
+                                ]
+                            }
+                        }
+                      Effect    = "Deny"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner3"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket"
+                      Sid       = "DenyNonPartner3Requests"
+                    },
+                  {
+                      Action    = "s3:ListBucket"
+                      Condition = {
+                          Null          = {
+                              s3:prefix = [
+                                  "false",
+                                ]
+                            }
+                          StringNotLike = {
+                              s3:prefix = [
+                                  "Partner4/*",
+                                  "",
+                                ]
+                            }
+                        }
+                      Effect    = "Deny"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner4"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket"
+                      Sid       = "DenyNonPartner4Requests"
+                    },
+                  {
+                      Action    = "s3:ListBucket"
+                      Condition = {
+                          Null          = {
+                              s3:prefix = [
+                                  "false",
+                                ]
+                            }
+                          StringNotLike = {
+                              s3:prefix = [
+                                  "partner5/*",
+                                  "",
+                                ]
+                            }
+                        }
+                      Effect    = "Deny"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner5"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket"
+                      Sid       = "DenyNonPartner5Requests"
+                    },
+                  {
+                      Action    = "s3:ListBucket"
+                      Condition = {
+                          Null          = {
+                              s3:prefix = [
+                                  "false",
+                                ]
+                            }
+                          StringNotLike = {
+                              s3:prefix = [
+                                  "Partner6/*",
+                                  "",
+                                ]
+                            }
+                        }
+                      Effect    = "Deny"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner6"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket"
+                      Sid       = "DenyNonPartner6Requests"
+                    },
+                  {
+                      Action    = "s3:ListBucket"
+                      Condition = {
+                          Null          = {
+                              s3:prefix = [
+                                  "false",
+                                ]
+                            }
+                          StringNotLike = {
+                              s3:prefix = [
+                                  "Partner7/*",
+                                  "",
+                                ]
+                            }
+                        }
+                      Effect    = "Deny"
+                      Principal = {
+                          AWS = [
+                              "arn:aws:iam::947197796922:user/Partner7c",
+                              "arn:aws:iam::947197796922:user/Partner7b",
+                              "arn:aws:iam::947197796922:user/Partner7a",
+                            ]
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket"
+                      Sid       = "DenyNonPartner7Requests"
+                    },
+                  {
+                      Action    = "s3:ListBucket"
+                      Condition = {
+                          Null          = {
+                              s3:prefix = [
+                                  "false",
+                                ]
+                            }
+                          StringNotLike = {
+                              s3:prefix = [
+                                  "Partner8/*",
+                                  "",
+                                ]
+                            }
+                        }
+                      Effect    = "Deny"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner8"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket"
+                      Sid       = "DenyNonPartner8Requests"
+                    },
+                  {
+                      Action    = "s3:ListBucket"
+                      Condition = {
+                          Null          = {
+                              s3:prefix = [
+                                  "false",
+                                ]
+                            }
+                          StringNotLike = {
+                              s3:prefix = [
+                                  "Partner9/*",
+                                  "",
+                                ]
+                            }
+                        }
+                      Effect    = "Deny"
+                      Principal = {
+                          AWS = "arn:aws:iam::947197796922:user/Partner9"
+                        }
+                      Resource  = "arn:aws:s3:::kyler-iterated-testing-bucket"
+                      Sid       = "DenyNonPartner9Requests"
+                    },
+                ]
+              Version   = "2012-10-17"
+            }
+        )
+    }
