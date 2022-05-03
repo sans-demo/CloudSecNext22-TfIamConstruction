@@ -16,7 +16,7 @@ resource "aws_s3_bucket" "s3_bucket" {
 }
 
 module "s3_policy_and_lifecycle" {
-  source = "github.com/sans-demo/CloudSecNext22-TfIamConstruction/code?ref=v1.0"
+  source = "github.com/sans-demo/CloudSecNext22-TfIamConstruction?ref=v1.0"
   s3_bucket_name = aws_s3_bucket.s3_bucket.id
 
   s3_policy_input = {
