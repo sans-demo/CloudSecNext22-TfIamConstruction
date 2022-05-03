@@ -121,7 +121,7 @@ locals {
 }
 
 module "s3_policy_and_lifecycle" {
-  source = "github.com/sans-demo/CloudSecNext22-TfIamConstruction?ref=v1.0"
+  source = "github.com/sans-demo/CloudSecNext22-TfIamConstruction?ref=v1.2"
   s3_bucket_name = aws_s3_bucket.s3_bucket.id
 
   # The S3 folder name targeted by permissions is implicitly the Key value
